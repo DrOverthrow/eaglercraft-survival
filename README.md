@@ -9,7 +9,7 @@ A beginner-friendly setup for a **Survival** Eaglercraft server. The first targe
 1. Open the green **Code** button near the top of this repository.
 2. Choose **Codespaces** → **Create codespace on main**. Wait for the browser workspace to finish loading.
 3. Open **Terminal → New Terminal** in the Codespaces window.
-4. Run these two commands, one at a time:
+4. Run:
 
    ```bash
    python3 launch/setup.py
@@ -17,19 +17,22 @@ A beginner-friendly setup for a **Survival** Eaglercraft server. The first targe
 
    The setup downloads Paper 26.2, EaglerXPaper, ViaVersion and ViaBackwards. It asks you to accept the Minecraft EULA before it writes `eula=true`. Answer `y` only if you agree to the EULA.
 
+   After setup finishes, run:
+
    ```bash
    bash launch/start-server.sh
    ```
 
 5. Wait for Paper to finish starting and say that the server is ready. **Leave that terminal running.**
-6. In Codespaces, open the **Ports** tab at the bottom. Find port **25565**. Change its visibility to **Public**. If the UI offers a protocol setting, choose **HTTPS** so browser clients can use secure WebSockets.
-7. Codespaces shows a forwarded host similar to `YOUR-CODESPACE-25565.app.github.dev`. In Eaglercraft, open Multiplayer → Direct Connect and enter:
+6. In Codespaces, open the **Ports** tab at the bottom. Find port **25565**. Set its protocol to **HTTP** because EaglerXPaper accepts ordinary WebSocket (HTTP upgrade) connections on the server port. The outside Codespaces address still uses HTTPS/WSS.
+7. Set the port visibility to **Public**. Recheck visibility after changing the protocol, because GitHub may reset a port to private after a protocol change.
+8. Use the forwarded hostname shown in the Ports tab. In Eaglercraft, open Multiplayer → Direct Connect and enter:
 
    ```
-   wss://YOUR-CODESPACE-25565.app.github.dev
+   wss://YOUR-CODESPACE-25565.app.github.dev/
    ```
 
-   Replace the example host with the actual hostname shown in your Ports tab. Do not include `https://`, and do not type the example literally.
+   Replace the example hostname with the actual one shown in your Ports tab. Do not include `https://`.
 
 If it cannot connect, check the terminal for a startup error and confirm port 25565 is Public. Some managed or school accounts restrict Codespaces, public ports, or the compute quota.
 
