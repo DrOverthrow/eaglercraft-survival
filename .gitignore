@@ -1,0 +1,6 @@
+server-26.2/
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
