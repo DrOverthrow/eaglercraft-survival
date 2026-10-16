@@ -18,7 +18,7 @@
     "25565": {
       "label": "Eaglercraft WebSocket server",
       "onAutoForward": "notify",
-      "protocol": "https"
+      "protocol": "http"
     }
   },
   "postCreateCommand": "python3 --version && java -version"
